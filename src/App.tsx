@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CodeOfConduct from "./components/CodeOfConduct";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Community from "./pages/Community";
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <CodeOfConduct />
         <Footer />
       </div>
     </Router>
