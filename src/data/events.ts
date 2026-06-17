@@ -1,31 +1,38 @@
+import posterPride from "@/assets/POSTERPRIDE.jpeg";
+
 export interface Event {
   id: number;
   title: string;
   date: string;
   time: string;
   venue: string;
+  venueLink?: string;
   description: string;
   fullDescription?: string;
   image: string;
   type: "day" | "night";
   ticketLink: string;
-  lineup?: string[];
+  lineup?: Array<string | { name: string; instagram?: string }>;
   price?: string;
 }
 
 export const events: Event[] = [
   {
     id: 1,
-    title: "Puppy Hunter Mansion: Neon Dreams",
-    date: "Oct 28, 2023",
-    time: "22:00 - 05:00",
+    title: "Het Puppy Huis & Puppy Hunter Mansion World Pride Edition",
+    date: "July 25, 2026",
+    time: "13:00 - 20:00",
     venue: "Club Church, Amsterdam",
-    description: "Prepare for a night of neon-soaked debauchery. Top DJs, play areas, and the best crowd in town.",
-    fullDescription: "Prepare for a night of neon-soaked debauchery. Top DJs, play areas, and the best crowd in town. This is the ultimate gathering for pups, handlers, and hunters who want to experience the wilder side of nightlife. Expect a fully immersive environment with custom lighting, designated play zones, and a strict dress code that encourages you to unleash your inner animal.",
-    image: "https://picsum.photos/seed/neon/800/600",
+    venueLink: "https://www.clubchurch.nl/parties/hetPuppyHuis",
+    description: "After the Pride Walk, Club Church opens its doors to good boys, wild hearts, and playful souls for a colorful afternoon with the pack.",
+    fullDescription: "After showing your colors with pride and walking the Pride Walk with your beautiful little paws, you can come home. Club Church opens its doors to the good boys for the arrival of WorldPride Amsterdam, and Het Puppy Huis has prepared an afternoon made for connection, rest, play, and celebration. Expect light, color, bingo, shows, talks, friendly faces, and a place that feels like home for pups, handlers, hunters, friends, and curious new faces. From 17:00, the music gets deeper, the lights drop their bright colors, and Puppy Hunter Mansion takes over. The church becomes the Mansion of the pups: darker, louder, more playful, and ready for wild hearts to enter. Be a good boy, or don't.",
+    image: posterPride,
     type: "night",
-    ticketLink: "#",
-    lineup: ["DJ Buday (Berlin)", "Pup Tekno", "Pup Hunter"],
+    ticketLink: "https://ticketsoft.nl/pos/event/f772899c-8c78-4ada-9cf2-5686ee796667",
+    lineup: [
+      { name: "HÜNTER", instagram: "https://www.instagram.com/pup.hunter071/" },
+      { name: "TKHNØ", instagram: "https://www.instagram.com/tkhno.dj/" },
+    ],
     price: "€25.00",
   },
   {

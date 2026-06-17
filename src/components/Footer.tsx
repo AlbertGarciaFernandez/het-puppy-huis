@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
+import { Instagram, Mail, Send } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,9 +9,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="inline-block mb-6">
               <img 
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b1f3b733-5c29-4595-8857-797545934149/2025-02-28/c743e498-89c5-43a9-9807-7429188d374b.png" 
+                src="/logo_horizontal.png" 
                 alt="Het Puppy Huis" 
-                className="h-10 w-auto"
+                className="h-32 w-auto"
               />
             </Link>
             <p className="text-gray-400 max-w-md mb-6">
@@ -19,14 +19,17 @@ export default function Footer() {
               Be a good boy. Come play.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-pink hover:text-black transition-all duration-300">
-                <Instagram size={20} />
+              <a href="https://www.instagram.com/puppyhuntermansion/" target="_blank" rel="noreferrer" aria-label="Puppy Hunter Mansion Instagram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-pink hover:text-black transition-all duration-300">
+                <Instagram size={26} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-blue hover:text-black transition-all duration-300">
-                <Facebook size={20} />
+              <a href="https://www.instagram.com/hetpuppyhuis/" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Instagram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-blue hover:text-black transition-all duration-300">
+                <Instagram size={26} />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-green hover:text-black transition-all duration-300">
-                <Mail size={20} />
+              <a href="https://t.me/+npqx_DlVzC42MDc0" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Telegram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-purple hover:text-black transition-all duration-300">
+                <Send size={26} />
+              </a>
+              <a href="mailto:info@hetpuppyhuis.com" aria-label="Email Het Puppy Huis" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-green hover:text-black transition-all duration-300">
+                <Mail size={26} />
               </a>
             </div>
           </div>
@@ -36,8 +39,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link to="/events" className="text-gray-400 hover:text-neon-pink transition-colors">Events</Link></li>
               <li><Link to="/community" className="text-gray-400 hover:text-neon-blue transition-colors">Community</Link></li>
-              <li><Link to="/artists" className="text-gray-400 hover:text-neon-green transition-colors">Artists</Link></li>
-              <li><Link to="/gallery" className="text-gray-400 hover:text-neon-purple transition-colors">Gallery</Link></li>
+              <li><Link to="/artists" className="text-gray-400 hover:text-neon-green transition-colors">Pack</Link></li>
             </ul>
           </div>
           
@@ -58,7 +60,16 @@ export default function Footer() {
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Het Puppy Huis. All rights reserved.
+            &copy; {new Date().getFullYear()} Het Puppy Huis. All rights reserved. Powered by{" "}
+            <a
+              href="https://www.codehunterlab.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-neon-blue hover:text-white transition-colors"
+            >
+              Code Hunter Lab
+            </a>
+            .
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link to="/privacy" className="text-gray-500 text-sm hover:text-white transition-colors">Privacy Policy</Link>

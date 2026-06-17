@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Calendar, Users, Ticket, Info, ArrowRight } from "lucide-react";
+import { Calendar, Users, Ticket, Handshake, ArrowRight } from "lucide-react";
+import posterPride from "@/assets/POSTERPRIDE.jpeg";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -96,7 +97,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="relative h-96 lg:h-auto">
                 <img
-                  src="https://picsum.photos/seed/party/800/800"
+                  src={posterPride}
                   alt="Next Event"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -106,28 +107,50 @@ export default function Home() {
                 <div className="inline-block px-4 py-1 bg-neon-green/20 border border-neon-green/50 text-neon-green rounded-full text-sm font-bold uppercase tracking-wider mb-6 w-fit">
                   Next Event
                 </div>
-                <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-                  Puppy Hunter <span className="text-neon-pink">Mansion</span>
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                  <span className="text-neon-blue">Het Puppy Huis</span>{" "}
+                  <span className="text-white">&</span>{" "}
+                  <span className="text-neon-green">Puppy Hunter Mansion</span>{" "}
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue">
+                    World Pride Edition
+                  </span>
                 </h2>
                 <div className="flex items-center text-gray-300 mb-6 space-x-6">
                   <div className="flex items-center">
                     <Calendar className="w-5 h-5 mr-2 text-neon-blue" />
-                    <span>Oct 28, 22:00 - 05:00</span>
+                    <span>July 25, 2026, 13:00 - 20:00</span>
                   </div>
                   <div className="flex items-center">
                     <Users className="w-5 h-5 mr-2 text-neon-purple" />
-                    <span>Club Church, Amsterdam</span>
+                    <a
+                      href="https://www.clubchurch.nl/parties/hetPuppyHuis"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      Club Church, Amsterdam
+                    </a>
                   </div>
                 </div>
-                <p className="text-gray-400 mb-8 leading-relaxed">
-                  The ultimate night for pups, handlers, and hunters. Experience a neon-soaked playground with top DJs, play areas, and a community vibe like no other.
+                <p className="text-gray-300 mb-8 leading-relaxed text-lg">
+                  After the <span className="text-neon-pink font-semibold">Pride Walk</span>, come home to your pack. Club Church opens its doors for a <span className="text-neon-blue font-semibold">colorful WorldPride afternoon</span> with bingo, shows, talks, friends, new faces, and a house full of playful souls. From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights go down, and <span className="text-neon-purple font-semibold">Puppy Hunter Mansion</span> takes over.
                 </p>
-                <Link
-                  to="/events/next"
-                  className="inline-flex items-center text-neon-pink font-bold uppercase tracking-wider hover:text-white transition-colors group"
-                >
-                  Event Details <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                </Link>
+                <div className="flex flex-wrap items-center gap-6">
+                  <a
+                    href="https://ticketsoft.nl/pos/event/f772899c-8c78-4ada-9cf2-5686ee796667"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center text-neon-pink font-bold uppercase tracking-wider hover:text-white transition-colors group"
+                  >
+                    Get Tickets <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </a>
+                  <Link
+                    to="/events/1"
+                    className="inline-flex items-center text-neon-blue font-bold uppercase tracking-wider hover:text-white transition-colors group"
+                  >
+                    More Info <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -142,7 +165,7 @@ export default function Home() {
               { title: "Events", icon: Calendar, color: "text-neon-pink", border: "hover:border-neon-pink", link: "/events" },
               { title: "Community", icon: Users, color: "text-neon-blue", border: "hover:border-neon-blue", link: "/community" },
               { title: "Tickets", icon: Ticket, color: "text-neon-green", border: "hover:border-neon-green", link: "/events" }, // Assuming tickets are in events
-              { title: "About", icon: Info, color: "text-neon-purple", border: "hover:border-neon-purple", link: "/about" },
+              { title: "Partners", icon: Handshake, color: "text-neon-purple", border: "hover:border-neon-purple", link: "/partners" },
             ].map((item, index) => (
               <Link
                 key={index}

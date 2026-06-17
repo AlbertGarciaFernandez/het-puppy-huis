@@ -9,10 +9,8 @@ const navItems = [
   { name: "Mansion", path: "/mansion" },
   { name: "Events", path: "/events" },
   { name: "Community", path: "/community" },
-  { name: "Artists", path: "/artists" },
-  { name: "Gallery", path: "/gallery" },
+  { name: "Pack", path: "/artists" },
   { name: "Partners", path: "/partners" },
-  { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -41,12 +39,12 @@ export default function Navbar() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-40">
           <Link to="/" className="flex-shrink-0 group">
             <img 
-              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b1f3b733-5c29-4595-8857-797545934149/2025-02-28/c743e498-89c5-43a9-9807-7429188d374b.png" 
+              src="/logo_horizontal.png" 
               alt="Het Puppy Huis" 
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-32 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
           

@@ -6,6 +6,7 @@ interface EventProps {
   date: string;
   time: string;
   venue: string;
+  venueLink?: string;
   description: string;
   image: string;
   type: "day" | "night";
@@ -14,7 +15,7 @@ interface EventProps {
   key?: number | string;
 }
 
-export default function EventCard({ title, date, time, venue, description, image, type, ticketLink, id }: EventProps) {
+export default function EventCard({ title, date, time, venue, venueLink, description, image, type, ticketLink, id }: EventProps) {
   const isNight = type === "night";
   const accentColor = isNight ? "text-neon-green" : "text-neon-blue";
   const borderColor = isNight ? "border-neon-green/30 hover:border-neon-green" : "border-neon-blue/30 hover:border-neon-blue";
@@ -52,7 +53,13 @@ export default function EventCard({ title, date, time, venue, description, image
           
           <div className="flex items-center text-gray-400 mb-4">
             <MapPin className={`w-4 h-4 mr-2 ${accentColor}`} />
-            <span>{venue}</span>
+            {venueLink ? (
+              <a href={venueLink} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">
+                {venue}
+              </a>
+            ) : (
+              <span>{venue}</span>
+            )}
           </div>
           
           <p className="text-gray-400 mb-6 line-clamp-2">
@@ -70,6 +77,8 @@ export default function EventCard({ title, date, time, venue, description, image
           
           <a 
             href={ticketLink}
+            target="_blank"
+            rel="noreferrer"
             className={`flex items-center px-6 py-3 ${buttonColor} text-black font-bold uppercase tracking-wider rounded-lg transition-all duration-300 transform group-hover:translate-x-1`}
           >
             <Ticket className="w-4 h-4 mr-2" />

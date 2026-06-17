@@ -11,9 +11,7 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Community from "./pages/Community";
 import Artists from "./pages/Artists";
-import Gallery from "./pages/Gallery";
 import Partners from "./pages/Partners";
-import About from "./pages/About";
 import Contact from "./pages/Contact";
 
 import Mansion from "./pages/Mansion";
@@ -45,9 +43,9 @@ export default function App() {
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/community" element={<Community />} />
             <Route path="/artists" element={<Artists />} />
-            <Route path="/gallery" element={<Gallery />} />
+            {/* Gallery is hidden until we have approved event photos to publish. */}
             <Route path="/partners" element={<Partners />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<Community />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

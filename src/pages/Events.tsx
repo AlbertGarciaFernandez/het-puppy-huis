@@ -21,7 +21,7 @@ export default function Events() {
             <div className="flex items-center mb-8">
               <div className="w-2 h-8 bg-neon-green mr-4 rounded-full" />
               <h2 className="font-display text-3xl font-bold text-white uppercase tracking-wider">
-                Puppy Hunter <span className="text-neon-green">Mansion</span>
+                Het Puppy Huis & <span className="text-neon-green">Puppy Hunter Mansion</span>
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-8">

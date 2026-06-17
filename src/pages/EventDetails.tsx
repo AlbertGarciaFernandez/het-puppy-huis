@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Calendar, Clock, MapPin, Ticket, ArrowLeft, Twitter, Facebook, Link as LinkIcon, Check } from "lucide-react";
+import { Calendar, Clock, MapPin, Ticket, ArrowLeft, Twitter, Instagram, Link as LinkIcon, Check, PawPrint } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { events } from "@/data/events";
 import { useState } from "react";
@@ -22,8 +22,8 @@ export default function EventDetails() {
       case "twitter":
         url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
         break;
-      case "facebook":
-        url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      case "instagram":
+        url = "https://www.instagram.com/puppyhuntermansion/";
         break;
       case "copy":
         navigator.clipboard.writeText(shareUrl);
@@ -52,9 +52,20 @@ export default function EventDetails() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-4xl md:text-6xl font-bold text-white mb-4"
+            className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight"
           >
-            {event.title}
+            {event.id === 1 ? (
+              <>
+                <span className="text-neon-blue">Het Puppy Huis</span>{" "}
+                <span className="text-white">&</span>{" "}
+                <span className="text-neon-green">Puppy Hunter Mansion</span>{" "}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue">
+                  World Pride Edition
+                </span>
+              </>
+            ) : (
+              event.title
+            )}
           </motion.h1>
         </div>
       </div>
@@ -70,9 +81,26 @@ export default function EventDetails() {
               className="bg-neutral-900/50 border border-white/5 rounded-2xl p-8"
             >
               <h2 className="font-display text-2xl font-bold text-white mb-6">About the Event</h2>
-              <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                {event.fullDescription || event.description}
-              </p>
+              {event.id === 1 ? (
+                <div className="text-gray-300 leading-relaxed text-lg mb-6 space-y-4">
+                  <p>
+                    After showing your <span className="text-neon-pink font-semibold">colors with pride</span> and walking the Pride Walk with your beautiful little paws, you can come home.
+                  </p>
+                  <p>
+                    <span className="text-neon-blue font-semibold">Club Church</span> opens its doors to the good boys for the arrival of <span className="text-neon-green font-semibold">WorldPride Amsterdam</span>, and Het Puppy Huis has prepared an afternoon made for connection, rest, play, and celebration.
+                  </p>
+                  <p>
+                    Expect <span className="text-neon-purple font-semibold">light, color, bingo, shows, talks</span>, friendly faces, and a place that feels like home for pups, handlers, hunters, friends, and curious new faces.
+                  </p>
+                  <p>
+                    From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights drop their bright colors, and <span className="text-neon-pink font-semibold">Puppy Hunter Mansion</span> takes over.
+                  </p>
+                </div>
+              ) : (
+                <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                  {event.fullDescription || event.description}
+                </p>
+              )}
               <p className="text-gray-300 leading-relaxed text-lg">
                 Expect a fully immersive environment with custom lighting, designated play zones, and a strict dress code that encourages you to unleash your inner animal. Whether you're in full gear or just curious, the Mansion welcomes you.
               </p>
@@ -86,14 +114,25 @@ export default function EventDetails() {
               >
                 <h2 className="font-display text-2xl font-bold text-white mb-6">Lineup</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {event.lineup.map((artist, index) => (
-                    <div key={index} className="bg-neutral-900/50 border border-white/5 p-4 rounded-xl flex items-center">
-                      <div className="w-12 h-12 bg-neon-purple/20 rounded-full flex items-center justify-center text-neon-purple font-bold mr-4">
-                        {index + 1}
+                  {event.lineup.map((artist, index) => {
+                    const name = typeof artist === "string" ? artist : artist.name;
+                    const instagram = typeof artist === "string" ? undefined : artist.instagram;
+
+                    return (
+                      <div key={`${name}-${index}`} className="bg-neutral-900/50 border border-white/5 p-4 rounded-xl flex items-center">
+                        <div className="w-12 h-12 bg-neon-purple/20 rounded-full flex items-center justify-center text-neon-purple mr-4">
+                          <PawPrint className="w-6 h-6" />
+                        </div>
+                        {instagram ? (
+                          <a href={instagram} target="_blank" rel="noreferrer" className="text-white font-bold hover:text-neon-pink transition-colors">
+                            {name}
+                          </a>
+                        ) : (
+                          <span className="text-white font-bold">{name}</span>
+                        )}
                       </div>
-                      <span className="text-white font-bold">{artist}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
@@ -128,7 +167,18 @@ export default function EventDetails() {
                   <MapPin className="w-6 h-6 text-neon-green mr-4 mt-1" />
                   <div>
                     <h3 className="text-gray-400 text-sm uppercase tracking-wider mb-1">Venue</h3>
-                    <p className="text-white font-bold text-lg">{event.venue}</p>
+                    {event.venueLink ? (
+                      <a
+                        href={event.venueLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-white font-bold text-lg hover:text-neon-green transition-colors"
+                      >
+                        {event.venue}
+                      </a>
+                    ) : (
+                      <p className="text-white font-bold text-lg">{event.venue}</p>
+                    )}
                   </div>
                 </div>
 
@@ -145,6 +195,8 @@ export default function EventDetails() {
 
               <a 
                 href={event.ticketLink}
+                target="_blank"
+                rel="noreferrer"
                 className="block w-full py-4 bg-neon-pink text-black font-bold text-center uppercase tracking-wider rounded-lg hover:bg-white transition-colors mb-4"
               >
                 Get Tickets
@@ -159,11 +211,11 @@ export default function EventDetails() {
                   <Twitter className="w-5 h-5" />
                 </button>
                 <button 
-                  onClick={() => handleShare("facebook")}
-                  className="flex items-center justify-center py-3 border border-white/10 text-gray-300 hover:text-[#4267B2] hover:border-[#4267B2]/50 font-bold uppercase tracking-wider rounded-lg hover:bg-white/5 transition-colors"
-                  aria-label="Share on Facebook"
+                  onClick={() => handleShare("instagram")}
+                  className="flex items-center justify-center py-3 border border-white/10 text-gray-300 hover:text-neon-pink hover:border-neon-pink/50 font-bold uppercase tracking-wider rounded-lg hover:bg-white/5 transition-colors"
+                  aria-label="Open Instagram"
                 >
-                  <Facebook className="w-5 h-5" />
+                  <Instagram className="w-5 h-5" />
                 </button>
                 <button 
                   onClick={() => handleShare("copy")}

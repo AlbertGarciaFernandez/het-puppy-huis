@@ -1,18 +1,32 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Music, Zap, Moon, ShieldAlert } from "lucide-react";
+import { useEffect, useRef } from "react";
+import mansionHeroVideo from "@/assets/replicate-prediction-x2e9yrzhg1rmt0cytgzbapsg70.mp4";
 
 export default function Mansion() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white pt-20">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[80vh] flex items-end justify-center overflow-hidden pb-6">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black" />
-          <img 
-            src="https://picsum.photos/seed/nightclub/1920/1080" 
-            alt="Mansion Atmosphere" 
-            className="w-full h-full object-cover opacity-50"
+          <video
+            ref={videoRef}
+            src={mansionHeroVideo}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-label="Mansion atmosphere background video"
           />
         </div>
         
@@ -22,21 +36,17 @@ export default function Mansion() {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center max-w-4xl px-4"
         >
-          <img 
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b1f3b733-5c29-4595-8857-797545934149/2025-02-28/6287955b-4394-4638-b649-118e77514107.png" 
-            alt="Puppy Hunter Mansion" 
-            className="w-full max-w-2xl mx-auto mb-8 drop-shadow-[0_0_30px_rgba(0,255,0,0.3)]"
-          />
-          <p className="text-xl md:text-2xl text-gray-300 font-light tracking-widest uppercase mb-10">
+
+          <p className="text-xl md:text-2xl text-white font-light tracking-widest uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             Where the <span className="text-neon-green font-bold">Hunters</span> prowl and the <span className="text-neon-pink font-bold">Pups</span> play.
           </p>
-          <Link 
-            to="/events" 
-            className="inline-block px-10 py-4 bg-neon-green text-black font-bold text-xl uppercase tracking-wider hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.6)] transition-all duration-300 skew-x-[-10deg]"
-          >
-            <span className="block skew-x-[10deg]">Enter the Mansion</span>
-          </Link>
         </motion.div>
+        <Link 
+          to="/events" 
+          className="absolute bottom-8 right-8 z-10 inline-block px-10 py-4 bg-neon-green text-black font-bold text-xl uppercase tracking-wider hover:bg-white hover:shadow-[0_0_20px_rgba(204,255,0,0.6)] transition-all duration-300 skew-x-[-10deg]"
+        >
+          <span className="block skew-x-[10deg]">Enter the Mansion</span>
+        </Link>
       </section>
 
       {/* Concept Section */}
