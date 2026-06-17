@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, Send } from "lucide-react";
+import hunterHorizontalLogo from "@/assets/hunter_horizontal .png";
 
 export default function Footer() {
   return (
@@ -7,11 +8,16 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <Link to="/" className="inline-block mb-6">
+            <Link to="/" className="inline-flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
               <img 
                 src="/logo_horizontal.png" 
                 alt="Het Puppy Huis" 
                 className="h-32 w-auto"
+              />
+              <img
+                src={hunterHorizontalLogo}
+                alt="Puppy Hunter Mansion"
+                className="h-16 w-auto"
               />
             </Link>
             <p className="text-gray-400 max-w-md mb-6">
@@ -43,7 +49,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><Link to="/events" className="text-gray-400 hover:text-neon-pink transition-colors">Events</Link></li>
               <li><Link to="/community" className="text-gray-400 hover:text-neon-blue transition-colors">Community</Link></li>
-              <li><Link to="/artists" className="text-gray-400 hover:text-neon-green transition-colors">Pack</Link></li>
+              <li><Link to="/artists" className="text-gray-400 hover:text-neon-green transition-colors">Team</Link></li>
             </ul>
           </div>
           

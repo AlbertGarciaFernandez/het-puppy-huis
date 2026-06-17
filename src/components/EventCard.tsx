@@ -21,6 +21,7 @@ export default function EventCard({ title, date, time, venue, venueLink, descrip
   const accentColor = isNight ? "text-neon-green" : "text-neon-blue";
   const borderColor = isNight ? "border-neon-green/30 hover:border-neon-green" : "border-neon-blue/30 hover:border-neon-blue";
   const buttonColor = isNight ? "bg-neon-green hover:bg-white" : "bg-neon-blue hover:bg-white";
+  const isPrideEvent = Number(id) === 1;
 
   return (
     <div className={`group relative flex flex-col md:flex-row bg-neutral-900/50 border ${borderColor} rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-${isNight ? "neon-green" : "neon-blue"}/20`}>
@@ -49,7 +50,18 @@ export default function EventCard({ title, date, time, venue, venueLink, descrip
           </div>
           
           <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">
-            {title}
+            {isPrideEvent ? (
+              <>
+                <span className="text-neon-blue">Het Puppy Huis</span>{" "}
+                <span className="text-white">&</span>{" "}
+                <span className="text-neon-green">Puppy Hunter Mansion</span>{" "}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue">
+                  World Pride Edition
+                </span>
+              </>
+            ) : (
+              title
+            )}
           </h3>
           
           <div className="flex items-center text-gray-400 mb-4">
@@ -63,8 +75,14 @@ export default function EventCard({ title, date, time, venue, venueLink, descrip
             )}
           </div>
           
-          <p className="text-gray-400 mb-6 line-clamp-2">
-            {description}
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            {isPrideEvent ? (
+              <>
+                After the <span className="text-neon-pink font-semibold">Pride Walk</span>, come home to your pack for a <span className="text-neon-blue font-semibold">WorldPride afternoon</span> full of color, bingo, shows, talks and new faces. From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper and <span className="text-neon-purple font-semibold">Puppy Hunter Mansion</span> takes over.
+              </>
+            ) : (
+              description
+            )}
           </p>
         </div>
         

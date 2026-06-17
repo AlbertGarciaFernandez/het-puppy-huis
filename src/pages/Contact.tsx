@@ -24,7 +24,7 @@ export default function Contact() {
             <p className="text-gray-400 mb-6">
               Stay updated on upcoming events, ticket drops, and community news. We promise not to spam (unless you're into that).
             </p>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" action="mailto:info@hetpuppyhuis.com?subject=Newsletter%20subscription" method="post" encType="text/plain">
               <input
                 type="email"
                 placeholder="Your email address"
@@ -45,9 +45,9 @@ export default function Contact() {
             <p className="text-gray-400 mb-6">
               Want to help out at events? We're always looking for volunteers, care bears, and creative souls to join our team.
             </p>
-            <button className="w-full border border-neon-blue text-neon-blue font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-neon-blue hover:text-black transition-colors">
+            <a href="mailto:info@hetpuppyhuis.com?subject=Volunteer%20application" className="block w-full border border-neon-blue text-neon-blue font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-neon-blue hover:text-black transition-colors text-center">
               Volunteer Application
-            </button>
+            </a>
           </div>
 
           {/* Booking / General Contact */}
@@ -59,7 +59,7 @@ export default function Contact() {
             <p className="text-gray-400 mb-8">
               For DJ bookings, venue partnerships, or general questions, drop us a line.
             </p>
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" action="mailto:woof@puppyhuntermansion.com?subject=Bookings%20and%20inquiries" method="post" encType="text/plain">
               <input
                 type="text"
                 placeholder="Name"

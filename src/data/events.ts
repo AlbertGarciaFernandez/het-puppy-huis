@@ -58,7 +58,7 @@ export const events: Event[] = [
     id: 3,
     title: "Puppy Hunter Mansion: Edition",
     date: "November 14, 2026",
-    time: "Save the date",
+    time: "22:00 - 05:00",
     venue: "Club Church, Amsterdam",
     description: "Save the date. More info soon.",
     fullDescription: "Puppy Hunter Mansion: Cyberpunk Edition returns on November 14. Save the date. More info soon.",

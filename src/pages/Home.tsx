@@ -133,7 +133,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                  After the <span className="text-neon-pink font-semibold">Pride Walk</span>, come home to your pack. Club Church opens its doors for a <span className="text-neon-blue font-semibold">colorful WorldPride afternoon</span> with bingo, shows, talks, friends, new faces, and a house full of playful souls. From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights go down, and <span className="text-neon-purple font-semibold">Puppy Hunter Mansion</span> takes over.
+                  After the <span className="text-neon-pink font-semibold">Pride Walk</span>, come home to your pack. Club Church opens its doors for a <span className="text-neon-blue font-semibold">colorful WorldPride afternoon</span> built for good boys, wild hearts and playful souls. Expect <span className="text-neon-green font-semibold">bingo, shows, talks, friends, new faces</span> and a house full of puppy energy. From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights go down, and <span className="text-neon-purple font-semibold">Puppy Hunter Mansion</span> takes over with darker sounds, brighter instincts and a little trouble in the air.
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
                   <a
@@ -163,7 +163,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { title: "Events", icon: Calendar, color: "text-neon-pink", border: "hover:border-neon-pink", link: "/events" },
-              { title: "Community", icon: Users, color: "text-neon-blue", border: "hover:border-neon-blue", link: "/community" },
+              { title: "Team", icon: Users, color: "text-neon-blue", border: "hover:border-neon-blue", link: "/artists" },
               { title: "Tickets", icon: Ticket, color: "text-neon-green", border: "hover:border-neon-green", link: "/events" }, // Assuming tickets are in events
               { title: "Partners", icon: Handshake, color: "text-neon-purple", border: "hover:border-neon-purple", link: "/partners" },
             ].map((item, index) => (

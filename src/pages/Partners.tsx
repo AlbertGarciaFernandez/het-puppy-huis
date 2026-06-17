@@ -1,11 +1,11 @@
 import { motion } from "motion/react";
 import { Handshake, ShoppingBag, Star } from "lucide-react";
+import churchLogo from "@/assets/church.png";
+import misterBLogo from "@/assets/misterb_logo_original_tones_transparent.png";
 
 const partners = [
-  { name: "Mr. S Leather", logo: "https://picsum.photos/seed/mrs/200/100", type: "Gear Partner" },
-  { name: "Fetish Freaks", logo: "https://picsum.photos/seed/ff/200/100", type: "Merch" },
-  { name: "Club Church", logo: "https://picsum.photos/seed/cc/200/100", type: "Venue" },
-  { name: "Puppy Pride", logo: "https://picsum.photos/seed/pp/200/100", type: "Community" },
+  { name: "Mister B", logo: misterBLogo, type: "Gear Partner", link: "https://www.misterb.com/en/new?gad_source=1&gad_campaignid=20276901572&gbraid=0AAAAApjT07napmDHcEPBjF2Gr7ybNvN4U&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_pb01NIoQZHy9bmSfTyGRUyznQUx9OFXblOL6hiKNJuOL-Q0I0qm72EaAgsHEALw_wcB" },
+  { name: "Club Church", logo: churchLogo, type: "Venue", link: "https://www.clubchurch.nl/" },
 ];
 
 export default function Partners() {
@@ -23,18 +23,21 @@ export default function Partners() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
           {partners.map((partner, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={partner.link}
+              target="_blank"
+              rel="noreferrer"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className="bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col items-center justify-center hover:bg-white/10 transition-colors group"
             >
-              <img src={partner.logo} alt={partner.name} className="mb-4 grayscale group-hover:grayscale-0 transition-all" />
+              <img src={partner.logo} alt={partner.name} className="h-24 w-full object-contain mb-4 grayscale group-hover:grayscale-0 transition-all" />
               <h3 className="font-bold text-white mb-1">{partner.name}</h3>
               <p className="text-xs text-gray-400 uppercase tracking-wider">{partner.type}</p>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
 
@@ -45,9 +48,9 @@ export default function Partners() {
             <p className="text-gray-400 mb-6">
               Want to sell your gear, art, or merch at our events? We love supporting independent creators within the community.
             </p>
-            <button className="px-6 py-3 bg-neon-pink text-black font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors">
+            <a href="mailto:info@hetpuppyhuis.com?subject=Vendor%20application" className="inline-block px-6 py-3 bg-neon-pink text-black font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors">
               Apply Now
-            </button>
+            </a>
           </div>
 
           <div className="bg-neutral-900/50 border border-neon-blue/20 rounded-2xl p-8">
@@ -56,9 +59,9 @@ export default function Partners() {
             <p className="text-gray-400 mb-6">
               Are you a brand, venue, or organization looking to partner with Het Puppy Huis? Let's create something amazing together.
             </p>
-            <button className="px-6 py-3 bg-neon-blue text-black font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors">
+            <a href="mailto:info@hetpuppyhuis.com?subject=Partnership%20collaboration" className="inline-block px-6 py-3 bg-neon-blue text-black font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors">
               Get in Touch
-            </button>
+            </a>
           </div>
         </div>
       </motion.div>

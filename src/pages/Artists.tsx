@@ -1,10 +1,12 @@
 import { motion } from "motion/react";
-import { Instagram } from "lucide-react";
+import { Instagram, Music2 } from "lucide-react";
 import alessandroImage from "@/assets/ALESSANDRO.jpeg";
 import hunterImage from "@/assets/HUNTER.png";
 import jiraImage from "@/assets/JIRA.jpg";
 import mangoImage from "@/assets/MANGO.jpg";
+import naviImage from "@/assets/navi.jpeg";
 import polarImage from "@/assets/POLAR.jpg";
+import spunkyImage from "@/assets/spunky.jpg";
 
 const artists = [
   {
@@ -17,10 +19,11 @@ const artists = [
     iconHoverColor: "hover:text-neon-green",
   },
   {
-    name: "IMANOL",
-    image: "https://picsum.photos/seed/imanol/400/400",
-    tags: ["Pack Father", "Care", "Dancefloor Warmth"],
-    bio: "The father of the pack. Imanol keeps everyone close, checks the room with a smile and makes sure no pup gets left behind. Warm, social and always ready to dance, he brings the heart that holds the chaos together.",
+    name: "NAVI",
+    image: naviImage,
+    tags: ["Patrol", "Care", "Pack Direction"],
+    bio: "The guide of the team. Navi keeps the group together, watches the room and makes sure no pup gets left behind. Warm, social and always ready to move, he brings direction to the chaos.",
+    tiktok: "https://www.tiktok.com/@het_puppy_huis_patrol?_r=1&_t=ZG-97HbLXLkGI5",
     hoverColor: "group-hover:text-neon-pink",
     iconHoverColor: "hover:text-neon-pink",
   },
@@ -46,7 +49,7 @@ const artists = [
     name: "JIRA",
     image: jiraImage,
     tags: ["Shibari", "Social Media", "Craft"],
-    bio: "Our handsome Colombian bear. Jira knows ropes, rhythm and exactly how to keep things tied up properly. His shibari brings sensuality, craft and control to the pack, while his eye keeps our social media looking sharp.",
+    bio: "Our resident rigger. Jira brings sensuality, craft and control to the community, tying every detail together with care, patience and a sharp creative eye.",
     instagram: "https://www.instagram.com/pup.jira/",
     hoverColor: "group-hover:text-neon-green",
     iconHoverColor: "hover:text-neon-green",
@@ -59,6 +62,15 @@ const artists = [
     instagram: "https://www.instagram.com/dutchpup_mango/",
     hoverColor: "group-hover:text-orange-400",
     iconHoverColor: "hover:text-orange-400",
+  },
+  {
+    name: "SPUNKY",
+    image: spunkyImage,
+    tags: ["Adventure", "Community", "Mischief"],
+    bio: "A playful, submissive pup with a mischievous tail and a sweet heart. Spunky loves adventure, connection and bringing people together wherever the team goes.",
+    instagram: "https://www.instagram.com/pup_spunky",
+    hoverColor: "group-hover:text-neon-blue",
+    iconHoverColor: "hover:text-neon-blue",
   },
 ];
 
@@ -73,10 +85,10 @@ export default function Artists() {
       >
         <div className="text-center mb-16">
           <h1 className="font-display text-5xl md:text-7xl font-bold mb-6">
-            <span className="text-neon-purple">PACK</span>
+            <span className="text-neon-purple">TEAM</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-            A playful, creative and slightly chaotic pack of artists, DJs, pups, handlers and beautiful troublemakers, bringing music, performance, visuals, shibari, photography and community together under one mansion.
+            A playful, creative and slightly chaotic team of artists, DJs, pups, handlers and beautiful troublemakers, bringing music, performance, visuals, shibari, photography and community together under one mansion.
           </p>
         </div>
 
@@ -84,12 +96,12 @@ export default function Artists() {
           {artists.map((artist, index) => (
             <motion.a
               key={index}
-              href={artist.instagram || "#"}
-              target={artist.instagram ? "_blank" : undefined}
-              rel={artist.instagram ? "noreferrer" : undefined}
-              aria-label={artist.instagram ? `${artist.name} Instagram` : artist.name}
+              href={artist.instagram || artist.tiktok || "#"}
+              target={artist.instagram || artist.tiktok ? "_blank" : undefined}
+              rel={artist.instagram || artist.tiktok ? "noreferrer" : undefined}
+              aria-label={artist.instagram ? `${artist.name} Instagram` : artist.tiktok ? `${artist.name} TikTok` : artist.name}
               onClick={(event) => {
-                if (!artist.instagram) event.preventDefault();
+                if (!artist.instagram && !artist.tiktok) event.preventDefault();
               }}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -123,6 +135,11 @@ export default function Artists() {
                 {artist.instagram && (
                   <span className={`mx-auto flex w-fit text-gray-300 ${artist.iconHoverColor} transition-colors`}>
                     <Instagram size={30} />
+                  </span>
+                )}
+                {artist.tiktok && (
+                  <span className={`mx-auto flex w-fit text-gray-300 ${artist.iconHoverColor} transition-colors`}>
+                    <Music2 size={30} />
                   </span>
                 )}
               </div>
