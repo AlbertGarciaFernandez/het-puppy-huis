@@ -10,12 +10,13 @@ interface EventProps {
   description: string;
   image: string;
   type: "day" | "night";
+  label?: string;
   ticketLink: string;
   id?: number | string;
   key?: number | string;
 }
 
-export default function EventCard({ title, date, time, venue, venueLink, description, image, type, ticketLink, id }: EventProps) {
+export default function EventCard({ title, date, time, venue, venueLink, description, image, type, label, ticketLink, id }: EventProps) {
   const isNight = type === "night";
   const accentColor = isNight ? "text-neon-green" : "text-neon-blue";
   const borderColor = isNight ? "border-neon-green/30 hover:border-neon-green" : "border-neon-blue/30 hover:border-neon-blue";
@@ -30,7 +31,7 @@ export default function EventCard({ title, date, time, venue, venueLink, descrip
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute top-4 left-4 px-3 py-1 bg-black/70 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-wider text-white border border-white/10">
-          {type === "day" ? "Day Event" : "Night Event"}
+          {label || (type === "day" ? "Day Event" : "Night Event")}
         </div>
       </div>
       

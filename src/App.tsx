@@ -13,6 +13,7 @@ import Community from "./pages/Community";
 import Artists from "./pages/Artists";
 import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
+import PuppyGuide from "./pages/PuppyGuide";
 
 import Mansion from "./pages/Mansion";
 
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/events/details" element={<EventDetails />} />
             <Route path="/events/:id" element={<EventDetails />} />
             <Route path="/community" element={<Community />} />
+            <Route path="/puppy-guide" element={<PuppyGuide />} />
             <Route path="/artists" element={<Artists />} />
             {/* Gallery is hidden until we have approved event photos to publish. */}
             <Route path="/partners" element={<Partners />} />

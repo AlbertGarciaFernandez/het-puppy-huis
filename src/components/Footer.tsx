@@ -18,18 +18,22 @@ export default function Footer() {
               A modern, immersive community and event brand focused on the international Puppy community. 
               Be a good boy. Come play.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.instagram.com/puppyhuntermansion/" target="_blank" rel="noreferrer" aria-label="Puppy Hunter Mansion Instagram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-pink hover:text-black transition-all duration-300">
+            <div className="flex flex-wrap gap-3">
+              <a href="https://www.instagram.com/puppyhuntermansion/" target="_blank" rel="noreferrer" aria-label="Puppy Hunter Mansion Instagram" className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-3 text-white hover:bg-neon-pink hover:text-black transition-all duration-300">
                 <Instagram size={26} />
+                <span className="text-sm font-bold uppercase tracking-wider">Hunter Mansion</span>
               </a>
-              <a href="https://www.instagram.com/hetpuppyhuis/" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Instagram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-blue hover:text-black transition-all duration-300">
+              <a href="https://www.instagram.com/hetpuppyhuis/" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Instagram" className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-3 text-white hover:bg-neon-blue hover:text-black transition-all duration-300">
                 <Instagram size={26} />
+                <span className="text-sm font-bold uppercase tracking-wider">Het Puppy Huis</span>
               </a>
-              <a href="https://t.me/+npqx_DlVzC42MDc0" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Telegram" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-purple hover:text-black transition-all duration-300">
+              <a href="https://t.me/+npqx_DlVzC42MDc0" target="_blank" rel="noreferrer" aria-label="Het Puppy Huis Telegram" className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-3 text-white hover:bg-neon-purple hover:text-black transition-all duration-300">
                 <Send size={26} />
+                <span className="text-sm font-bold uppercase tracking-wider">Telegram</span>
               </a>
-              <a href="mailto:info@hetpuppyhuis.com" aria-label="Email Het Puppy Huis" className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-neon-green hover:text-black transition-all duration-300">
+              <a href="mailto:info@hetpuppyhuis.com" aria-label="Email Het Puppy Huis" className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-3 text-white hover:bg-neon-green hover:text-black transition-all duration-300">
                 <Mail size={26} />
+                <span className="text-sm font-bold uppercase tracking-wider">Email</span>
               </a>
             </div>
           </div>

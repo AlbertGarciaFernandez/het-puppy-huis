@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Music, Zap, Moon, ShieldAlert } from "lucide-react";
 import { useEffect, useRef } from "react";
+import hunterMansionIcon from "@/assets/huntermansion.png";
 import mansionHeroVideo from "@/assets/replicate-prediction-x2e9yrzhg1rmt0cytgzbapsg70.mp4";
 
 export default function Mansion() {
@@ -101,19 +102,12 @@ export default function Mansion() {
 
       {/* Visual Breaker */}
       <section className="py-12 bg-black overflow-hidden">
-        <div className="flex whitespace-nowrap">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex items-center mx-4 animate-marquee">
-              <span className="text-6xl md:text-8xl font-display font-bold text-transparent stroke-text-neon-green opacity-30">
-                PUPPY HUNTER MANSION
-              </span>
-              <img 
-                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b1f3b733-5c29-4595-8857-797545934149/2025-02-28/017c1569-424a-4d7a-b5e1-875f1562947a.png" 
-                alt="Icon" 
-                className="w-16 h-16 mx-8 opacity-50"
-              />
-            </div>
-          ))}
+        <div className="flex justify-center px-4">
+          <img 
+            src={hunterMansionIcon} 
+            alt="Puppy Hunter Mansion" 
+            className="w-full max-w-4xl h-auto"
+          />
         </div>
       </section>
     </div>

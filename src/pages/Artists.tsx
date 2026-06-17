@@ -11,7 +11,7 @@ const artists = [
     name: "HÜNter",
     image: hunterImage,
     tags: ["Resident DJ", "Visual Artist", "Brand Creator"],
-    bio: "Iconic, fierce and full of diva energy, HÜNter brings the feminine touch to the pack, with vision, attitude and a sharp creative instinct.",
+    bio: "Iconic, fierce and impossible to ignore. HÜNter brings diva energy, sharp visuals and the creative instinct behind the brand. When he enters the room, the pack knows something is about to happen.",
     instagram: "https://www.instagram.com/pup.hunter071/",
     hoverColor: "group-hover:text-neon-green",
     iconHoverColor: "hover:text-neon-green",
@@ -20,7 +20,7 @@ const artists = [
     name: "IMANOL",
     image: "https://picsum.photos/seed/imanol/400/400",
     tags: ["Pack Father", "Care", "Dancefloor Warmth"],
-    bio: "The father of the pack. He guides the pack, keeps everyone together and makes sure no pup gets left behind. Social, smiley and always ready to dance, Imanol brings warmth, care and direction to the group.",
+    bio: "The father of the pack. Imanol keeps everyone close, checks the room with a smile and makes sure no pup gets left behind. Warm, social and always ready to dance, he brings the heart that holds the chaos together.",
     hoverColor: "group-hover:text-neon-pink",
     iconHoverColor: "hover:text-neon-pink",
   },
@@ -28,7 +28,7 @@ const artists = [
     name: "ALESSANDRO",
     image: alessandroImage,
     tags: ["Pack Uncle", "Room Boss", "Italian Heat"],
-    bio: "The Italian uncle of the pack. Like a good Italian ristretto, he is rich, hot and absolutely necessary, whether it is morning or night. Do not let his size fool you. He is the real boss of the room.",
+    bio: "The Italian uncle of the pack. Rich, hot and absolutely necessary, Alessandro brings ristretto energy to every room. Do not let the size fool you. He is small, powerful and very much in charge.",
     instagram: "https://www.instagram.com/alessandro.faraon/",
     hoverColor: "group-hover:text-neon-blue",
     iconHoverColor: "hover:text-neon-blue",
@@ -37,7 +37,7 @@ const artists = [
     name: "POLAR",
     image: polarImage,
     tags: ["Photography", "Poster Model", "Creative Eye"],
-    bio: "Our youngest wild pup. Soft, playful and naturally charming, Polar is a born poster model with a very artistic eye. He loves photography, creativity and bringing a fresh, gentle energy to the pack.",
+    bio: "Our youngest wild pup. Polar is soft, playful and naturally magnetic, with a camera-ready face and an artist’s eye. He brings fresh energy, gentle chaos and the kind of charm that makes everyone look twice.",
     instagram: "https://www.instagram.com/polarfurreal/",
     hoverColor: "group-hover:text-neon-purple",
     iconHoverColor: "hover:text-neon-purple",
@@ -46,7 +46,7 @@ const artists = [
     name: "JIRA",
     image: jiraImage,
     tags: ["Shibari", "Social Media", "Craft"],
-    bio: "Our handsome Colombian bear. He loves ropes and making sure everything is tied up properly. With true artistry in his shibari, Jira brings sensuality, craft and control to the pack. And even as a big cuddly bear, he also knows how to keep our social media looking sharp.",
+    bio: "Our handsome Colombian bear. Jira knows ropes, rhythm and exactly how to keep things tied up properly. His shibari brings sensuality, craft and control to the pack, while his eye keeps our social media looking sharp.",
     instagram: "https://www.instagram.com/pup.jira/",
     hoverColor: "group-hover:text-neon-green",
     iconHoverColor: "hover:text-neon-green",
@@ -55,7 +55,7 @@ const artists = [
     name: "MANGO",
     image: mangoImage,
     tags: ["Good Vibes", "Support", "Creative Chaos"],
-    bio: "Sweet by name, sweet by nature. Always ready to help, support and collaborate, Mango brings kindness, good vibes and that juicy energy every pack needs.",
+    bio: "Sweet by name, sweet by nature. Mango is the helper, supporter and juicy burst of good energy every pack needs. Kind, creative and slightly chaotic, he turns simple moments into something warmer.",
     instagram: "https://www.instagram.com/dutchpup_mango/",
     hoverColor: "group-hover:text-orange-400",
     iconHoverColor: "hover:text-orange-400",
@@ -82,13 +82,20 @@ export default function Artists() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {artists.map((artist, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={artist.instagram || "#"}
+              target={artist.instagram ? "_blank" : undefined}
+              rel={artist.instagram ? "noreferrer" : undefined}
+              aria-label={artist.instagram ? `${artist.name} Instagram` : artist.name}
+              onClick={(event) => {
+                if (!artist.instagram) event.preventDefault();
+              }}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative bg-neutral-900/50 border border-white/5 rounded-xl overflow-hidden hover:border-neon-purple/50 transition-all duration-300"
+              className="group relative bg-neutral-900/50 border border-white/5 rounded-xl overflow-hidden hover:border-neon-purple/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-neon-purple/10 transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden relative">
                 <img
@@ -110,16 +117,16 @@ export default function Artists() {
               </div>
               
               <div className="p-6">
-                <p className="text-gray-400 mb-6 text-sm leading-relaxed">
+                <p className="text-gray-300 mb-6 text-base leading-7 tracking-wide">
                   {artist.bio}
                 </p>
                 {artist.instagram && (
-                  <a href={artist.instagram} target="_blank" rel="noreferrer" className={`mx-auto flex w-fit text-gray-300 ${artist.iconHoverColor} transition-colors`} aria-label={`${artist.name} Instagram`}>
+                  <span className={`mx-auto flex w-fit text-gray-300 ${artist.iconHoverColor} transition-colors`}>
                     <Instagram size={30} />
-                  </a>
+                  </span>
                 )}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </motion.div>

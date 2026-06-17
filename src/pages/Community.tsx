@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 import { Heart, Shield, BookOpen, Users, Globe, Zap } from "lucide-react";
 
 const values = [
@@ -31,8 +32,8 @@ export default function Community() {
         transition={{ duration: 0.5 }}
         className="max-w-4xl mx-auto"
       >
-        <div className="text-center mb-16">
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
+        <div className="text-center mb-14">
+          <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
             OUR <span className="text-neon-blue">COMMUNITY</span>
           </h1>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
@@ -41,7 +42,7 @@ export default function Community() {
         </div>
 
         <section className="mb-20 text-center">
-          <h2 className="font-display text-3xl font-bold text-white mb-6">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
             About <span className="text-neon-purple">Us</span>
           </h2>
           <p className="text-xl text-gray-300 leading-relaxed">
@@ -119,9 +120,9 @@ export default function Community() {
                   <li><strong>Ask for consent:</strong> Always ask before touching or engaging in play.</li>
                   <li><strong>Find your pack:</strong> Attend our social mixers to meet like-minded folks.</li>
                 </ul>
-                <button className="mt-6 px-6 py-3 bg-white/10 hover:bg-neon-pink hover:text-black text-white font-bold uppercase tracking-wider rounded-lg transition-all">
-                  Download Full Guide
-                </button>
+                <Link to="/puppy-guide" className="inline-block mt-6 px-6 py-3 bg-white/10 hover:bg-neon-pink hover:text-black text-white font-bold uppercase tracking-wider rounded-lg transition-all">
+                  Read the Puppy Guide
+                </Link>
               </div>
             </div>
           </div>
