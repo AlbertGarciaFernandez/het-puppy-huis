@@ -95,15 +95,26 @@ export default function EventDetails() {
                   <p>
                     From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights drop their bright colors, and <span className="text-neon-pink font-semibold">Puppy Hunter Mansion</span> takes over.
                   </p>
+                  <p>
+                    Tickets are <span className="text-neon-green font-semibold">€15 online</span>, plus <span className="text-neon-pink font-semibold">€10 cash at the door</span> as a minimum drink spend. This includes 1 token for 2 soft drinks or 1 alcoholic drink. Cloakroom is included.
+                  </p>
+                  <p>
+                    This is an event for everyone, so there will be <span className="text-neon-blue font-semibold">separate areas for socializing</span> and <span className="text-neon-purple font-semibold">separate areas for play</span>, keeping everyone comfortable while offering space for both kinds of energy.
+                  </p>
+                  <p>
+                    Let your inner beast out, but do it appropriately and with respect for the pack. <span className="text-neon-green font-semibold">Be a good boy, or don't.</span>
+                  </p>
                 </div>
               ) : (
                 <p className="text-gray-300 leading-relaxed text-lg mb-6">
                   {event.fullDescription || event.description}
                 </p>
               )}
-              <p className="text-gray-300 leading-relaxed text-lg">
-                Expect a fully immersive environment with custom lighting, designated play zones, and a strict dress code that encourages you to unleash your inner animal. Whether you're in full gear or just curious, the Mansion welcomes you.
-              </p>
+              {event.id !== 1 && (
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  Expect a fully immersive environment with custom lighting, designated play zones, and a strict dress code that encourages you to unleash your inner animal. Whether you're in full gear or just curious, the Mansion welcomes you.
+                </p>
+              )}
             </motion.div>
 
             {event.lineup && (
