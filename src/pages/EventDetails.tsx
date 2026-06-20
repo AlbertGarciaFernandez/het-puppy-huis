@@ -99,7 +99,7 @@ export default function EventDetails() {
                     Tickets are <span className="text-neon-green font-semibold">€15 online</span>, plus <span className="text-neon-pink font-semibold">€10 cash at the door</span> as a minimum drink spend. This includes 1 token for 2 soft drinks or 1 alcoholic drink. Cloakroom is included.
                   </p>
                   <p>
-                    This is an event for everyone, so there will be <span className="text-neon-blue font-semibold">separate areas for socializing</span> and <span className="text-neon-purple font-semibold">separate areas for play</span>, keeping everyone comfortable while offering space for both kinds of energy.
+                    For those unfamiliar with <span className="text-neon-blue font-semibold">Club Church</span>, the venue is a spacious three-story building with room for everyone to feel comfortable. We ask attendees to use the spaces appropriately: the bar and main floor are for <span className="text-neon-green font-semibold">socializing and activities</span>, while the darker downstairs areas are intended for <span className="text-neon-purple font-semibold">play</span>. You can check the venue facilities <a href="https://www.clubchurch.nl/info/facilities" target="_blank" rel="noreferrer" className="text-neon-pink font-semibold hover:text-white transition-colors underline underline-offset-4">here</a>.
                   </p>
                   <p>
                     Let your inner beast out, but do it appropriately and with respect for the pack. <span className="text-neon-green font-semibold">Be a good boy, or don't.</span>
