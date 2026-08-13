@@ -53,6 +53,10 @@ function getAlbumStorageFolder(album: { title: string }) {
   return album.title.trim();
 }
 
+function getMissingGalleryConfigNames() {
+  return ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY", "GALLERY_SESSION_SECRET"].filter((name) => !process.env[name]);
+}
+
 async function listAlbumStoragePaths(supabase: any, config: GalleryServerConfig, album: { title: string }) {
   const folder = getAlbumStorageFolder(album);
   const { data, error } = await supabase.storage.from(config.galleryPhotosBucket).list(folder, {
@@ -78,6 +82,17 @@ export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
   const app = express();
 
   app.use(express.json());
+
+  app.get("/api/health", (_req, res) => {
+    const missingConfig = dependencies.getConfig ? [] : getMissingGalleryConfigNames();
+
+    res.json({
+      ok: true,
+      galleryConfigReady: missingConfig.length === 0,
+      missingConfig,
+    });
+  });
+
   app.use((req, res, next) => {
     const { frontendOrigin } = getConfig();
 
@@ -93,10 +108,6 @@ export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
     }
 
     next();
-  });
-
-  app.get("/api/health", (_req, res) => {
-    res.json({ ok: true });
   });
 
   app.get("/api/gallery/albums", async (_req, res) => {
