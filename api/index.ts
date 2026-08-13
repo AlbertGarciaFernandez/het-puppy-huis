@@ -20,6 +20,9 @@ export default async function handler(req: any, res: any) {
     return galleryApp(req, res);
   } catch (error) {
     console.error("Gallery API invocation failed", error);
-    res.status(500).json({ error: "Gallery API invocation failed." });
+    res.status(500).json({
+      error: "Gallery API invocation failed.",
+      reason: error instanceof Error ? error.message : "Unknown error",
+    });
   }
 }
