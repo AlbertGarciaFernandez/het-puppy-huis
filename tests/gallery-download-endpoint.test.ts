@@ -10,7 +10,7 @@ function createMockSupabase() {
     id: "album-1",
     title: "First Chapter",
     slug: "first-chapter",
-    description: "First Chapter gallery.",
+    description: "Het Puppy Huis & Puppy Hunter Mansion World Pride Edition gallery.",
     cover_image_url: "https://example.com/cover.jpg",
     access_duration_minutes: 45,
   };
