@@ -4,7 +4,7 @@ import express from "express";
 import { signAlbumSessionToken, verifyAlbumSessionToken } from "./album-session";
 import { getGalleryServerConfig, type GalleryServerConfig } from "./env";
 import { getSupabaseAdmin } from "./supabase-admin";
-import { createWatermarkedImage, type CreateWatermarkedImageInput, type WatermarkedImage } from "./gallery-watermark";
+import type { CreateWatermarkedImageInput, WatermarkedImage } from "./gallery-watermark";
 
 type AlbumRow = {
   id: string;
@@ -78,7 +78,7 @@ async function listAlbumStoragePaths(supabase: any, config: GalleryServerConfig,
 export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
   const getConfig = dependencies.getConfig ?? getGalleryServerConfig;
   const getSupabase = dependencies.getSupabase ?? getSupabaseAdmin;
-  const watermarkImage = dependencies.createWatermarkedImage ?? createWatermarkedImage;
+  const watermarkImage = dependencies.createWatermarkedImage ?? ((input: CreateWatermarkedImageInput) => import("./gallery-watermark").then(({ createWatermarkedImage }) => createWatermarkedImage(input)));
   const app = express();
 
   app.use(express.json());
