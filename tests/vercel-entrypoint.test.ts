@@ -6,6 +6,6 @@ test("Vercel API entrypoint exports an explicit request handler", async () => {
   const entrypoint = await readFile("api/index.ts", "utf8");
 
   assert.match(entrypoint, /export default async function handler/);
-  assert.match(entrypoint, /import\("\.\.\/server\/lib\/gallery-app"\)/);
+  assert.match(entrypoint, /import\("\.\.\/server\/lib\/gallery-app\.js"\)/);
   assert.doesNotMatch(entrypoint, /import \{ createGalleryApp \} from/);
 });

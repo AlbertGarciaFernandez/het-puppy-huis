@@ -15,7 +15,7 @@ export default async function handler(req: any, res: any) {
       return;
     }
 
-    const { createGalleryApp } = await import("../server/lib/gallery-app");
+    const { createGalleryApp } = await import("../server/lib/gallery-app.js");
     const galleryApp = createGalleryApp();
     return galleryApp(req, res);
   } catch (error) {
