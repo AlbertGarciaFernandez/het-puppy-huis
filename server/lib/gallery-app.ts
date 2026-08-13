@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
 import express from "express";
 
-import { signAlbumSessionToken, verifyAlbumSessionToken } from "./album-session";
-import { getGalleryServerConfig, type GalleryServerConfig } from "./env";
-import { getSupabaseAdmin } from "./supabase-admin";
+import { signAlbumSessionToken, verifyAlbumSessionToken } from "./album-session.js";
+import { getGalleryServerConfig, type GalleryServerConfig } from "./env.js";
+import { getSupabaseAdmin } from "./supabase-admin.js";
 import type { CreateWatermarkedImageInput, WatermarkedImage } from "./gallery-watermark";
 
 type AlbumRow = {
@@ -78,7 +78,7 @@ async function listAlbumStoragePaths(supabase: any, config: GalleryServerConfig,
 export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
   const getConfig = dependencies.getConfig ?? getGalleryServerConfig;
   const getSupabase = dependencies.getSupabase ?? getSupabaseAdmin;
-  const watermarkImage = dependencies.createWatermarkedImage ?? ((input: CreateWatermarkedImageInput) => import("./gallery-watermark").then(({ createWatermarkedImage }) => createWatermarkedImage(input)));
+  const watermarkImage = dependencies.createWatermarkedImage ?? ((input: CreateWatermarkedImageInput) => import("./gallery-watermark.js").then(({ createWatermarkedImage }) => createWatermarkedImage(input)));
   const app = express();
 
   app.use(express.json());

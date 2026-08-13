@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 
-import { getGalleryServerConfig } from "./env";
+import { getGalleryServerConfig } from "./env.js";
 
 let cachedClient: ReturnType<typeof createClient> | null = null;
 
