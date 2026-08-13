@@ -303,7 +303,9 @@ export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
       }
 
       const storagePaths = await listAlbumStoragePaths(supabase, config, album);
-      if (!storagePaths.includes(photoId)) {
+      const photoIndex = storagePaths.indexOf(photoId);
+
+      if (photoIndex === -1) {
         res.status(404).json({ error: "Photo not found." });
         return;
       }
@@ -313,6 +315,8 @@ export function createGalleryApp(dependencies: GalleryAppDependencies = {}) {
         config,
         storagePath: photoId,
         photoId,
+        albumSlug: album.slug,
+        photoNumber: photoIndex + 1,
       });
 
       res.setHeader("Content-Type", watermarked.contentType);

@@ -72,10 +72,10 @@ function createTestApp() {
       frontendOrigin: null,
     }),
     getSupabase: createMockSupabase,
-    createWatermarkedImage: async ({ storagePath }) => ({
+    createWatermarkedImage: async ({ storagePath, albumSlug, photoNumber }) => ({
       data: Buffer.from(`watermarked:${storagePath}`),
       contentType: "image/jpeg",
-      filename: "photo-1-watermarked.jpg",
+      filename: `het-puppy-huis-${albumSlug}-${String(photoNumber).padStart(4, "0")}.jpg`,
     }),
   });
 }
@@ -145,7 +145,7 @@ test("download endpoint returns a watermarked image for a valid album session", 
 
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("content-type"), "image/jpeg");
-    assert.equal(response.headers.get("content-disposition"), 'attachment; filename="photo-1-watermarked.jpg"');
+    assert.equal(response.headers.get("content-disposition"), 'attachment; filename="het-puppy-huis-first-chapter-0001.jpg"');
     assert.equal(await response.text(), "watermarked:First Chapter/QO6A9029.JPG");
   } finally {
     server.close();

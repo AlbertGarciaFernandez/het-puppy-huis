@@ -18,6 +18,8 @@ export type CreateWatermarkedImageInput = {
   config: GalleryServerConfig;
   storagePath: string;
   photoId: string;
+  albumSlug: string;
+  photoNumber: number;
 };
 
 export type WatermarkedImage = {
@@ -28,8 +30,11 @@ export type WatermarkedImage = {
 
 const watermarkLogoPath = path.resolve(process.cwd(), "public/Het_Puppy_Huis_NOBG.png");
 
-function createSafeFilename(photoId: string) {
-  return `${photoId.replace(/[^a-z0-9-]/gi, "-")}-watermarked.jpg`;
+function createSafeFilename(albumSlug: string, photoNumber: number) {
+  const safeAlbumSlug = albumSlug.replace(/[^a-z0-9-]/gi, "-");
+  const paddedPhotoNumber = String(photoNumber).padStart(4, "0");
+
+  return `het-puppy-huis-${safeAlbumSlug}-${paddedPhotoNumber}.jpg`;
 }
 
 async function blobToBuffer(blob: Blob) {
@@ -41,6 +46,8 @@ export async function createWatermarkedImage({
   config,
   storagePath,
   photoId,
+  albumSlug,
+  photoNumber,
 }: CreateWatermarkedImageInput): Promise<WatermarkedImage> {
   const { data: photoBlob, error } = await supabase.storage
     .from(config.galleryPhotosBucket)
@@ -82,6 +89,6 @@ export async function createWatermarkedImage({
   return {
     data: watermarked,
     contentType: "image/jpeg",
-    filename: createSafeFilename(photoId),
+    filename: createSafeFilename(albumSlug, photoNumber),
   };
 }
