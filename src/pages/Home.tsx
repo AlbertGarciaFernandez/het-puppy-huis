@@ -1,7 +1,8 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Calendar, Users, Ticket, Handshake, ArrowRight } from "lucide-react";
-import posterPride from "@/assets/POSTERPRIDE.jpeg";
+import { events } from "@/data/events";
+import { getEventsByStatus } from "@/data/event-status";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,6 +24,8 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const nextEvent = getEventsByStatus(events, "upcoming")[0];
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -95,12 +98,12 @@ export default function Home() {
             className="relative rounded-3xl overflow-hidden border border-white/10 bg-neutral-900/50 backdrop-blur-sm"
           >
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative h-96 lg:h-auto">
-                <img
-                  src={posterPride}
-                  alt="Next Event"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <div className="relative h-96 lg:h-auto">
+                  <img
+                    src={nextEvent.image}
+                    alt={nextEvent.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent lg:bg-gradient-to-t" />
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -108,36 +111,31 @@ export default function Home() {
                   Next Event
                 </div>
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                  <span className="text-neon-blue">Het Puppy Huis</span>{" "}
-                  <span className="text-white">&</span>{" "}
-                  <span className="text-neon-green">Puppy Hunter Mansion</span>{" "}
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-pink via-neon-purple to-neon-blue">
-                    World Pride Edition
-                  </span>
+                  {nextEvent.title}
                 </h2>
                 <div className="flex items-center text-gray-300 mb-6 space-x-6">
                   <div className="flex items-center">
                     <Calendar className="w-5 h-5 mr-2 text-neon-blue" />
-                    <span>July 25, 2026, 13:00 - 20:00</span>
+                    <span>{nextEvent.date}, {nextEvent.time}</span>
                   </div>
                   <div className="flex items-center">
                     <Users className="w-5 h-5 mr-2 text-neon-purple" />
                     <a
-                      href="https://www.clubchurch.nl/parties/hetPuppyHuis"
+                      href={nextEvent.venueLink || "/events"}
                       target="_blank"
                       rel="noreferrer"
                       className="hover:text-white transition-colors"
                     >
-                      Club Church, Amsterdam
+                      {nextEvent.venue}
                     </a>
                   </div>
                 </div>
                 <p className="text-gray-300 mb-8 leading-relaxed text-lg">
-                  After the <span className="text-neon-pink font-semibold">Pride Walk</span>, come home to your pack. Club Church opens its doors for a <span className="text-neon-blue font-semibold">colorful WorldPride afternoon</span> built for good boys, wild hearts and playful souls. Expect <span className="text-neon-green font-semibold">bingo, shows, talks, friends, new faces</span> and a house full of puppy energy. From <span className="text-neon-green font-semibold">17:00</span>, the music gets deeper, the lights go down, and <span className="text-neon-purple font-semibold">Puppy Hunter Mansion</span> takes over with darker sounds, brighter instincts and a little trouble in the air.
+                  {nextEvent.description}
                 </p>
                 <div className="flex flex-wrap items-center gap-6">
                   <a
-                    href="https://ticketsoft.nl/pos/event/f772899c-8c78-4ada-9cf2-5686ee796667"
+                    href={nextEvent.ticketLink}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center text-neon-pink font-bold uppercase tracking-wider hover:text-white transition-colors group"
@@ -145,7 +143,7 @@ export default function Home() {
                     Get Tickets <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />
                   </a>
                   <Link
-                    to="/events/1"
+                    to={`/events/${nextEvent.id}`}
                     className="inline-flex items-center text-neon-blue font-bold uppercase tracking-wider hover:text-white transition-colors group"
                   >
                     More Info <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-2 transition-transform" />

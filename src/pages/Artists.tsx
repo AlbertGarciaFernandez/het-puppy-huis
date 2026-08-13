@@ -5,7 +5,6 @@ import hunterImage from "@/assets/HUNTER.png";
 import jiraImage from "@/assets/JIRA.jpg";
 import mangoImage from "@/assets/MANGO.jpg";
 import naviImage from "@/assets/navi.jpeg";
-import polarImage from "@/assets/POLAR.jpg";
 import spunkyImage from "@/assets/spunky.jpg";
 
 const artists = [
@@ -35,15 +34,6 @@ const artists = [
     instagram: "https://www.instagram.com/alessandro.faraon/",
     hoverColor: "group-hover:text-neon-blue",
     iconHoverColor: "hover:text-neon-blue",
-  },
-  {
-    name: "POLAR",
-    image: polarImage,
-    tags: ["Photography", "Poster Model", "Creative Eye"],
-    bio: "Our youngest wild pup. Polar is soft, playful and naturally magnetic, with a camera-ready face and an artist’s eye. He brings fresh energy, gentle chaos and the kind of charm that makes everyone look twice.",
-    instagram: "https://www.instagram.com/polarfurreal/",
-    hoverColor: "group-hover:text-neon-purple",
-    iconHoverColor: "hover:text-neon-purple",
   },
   {
     name: "JIRA",

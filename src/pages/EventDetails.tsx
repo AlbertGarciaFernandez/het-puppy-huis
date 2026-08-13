@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Calendar, Clock, MapPin, Ticket, ArrowLeft, Twitter, Instagram, Link as LinkIcon, Check, PawPrint } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { events } from "@/data/events";
+import { getEventHeroImage } from "@/data/event-images";
 import { useState } from "react";
 
 export default function EventDetails() {
@@ -15,6 +16,7 @@ export default function EventDetails() {
 
   const shareUrl = window.location.href;
   const shareText = `Check out ${event.title} at ${event.venue}!`;
+  const heroImage = getEventHeroImage(event);
 
   const handleShare = (platform: string) => {
     let url = "";
@@ -39,7 +41,7 @@ export default function EventDetails() {
       {/* Hero Image */}
       <div className="relative h-[50vh] w-full overflow-hidden">
         <img 
-          src={event.image} 
+          src={heroImage} 
           alt={event.title} 
           className="w-full h-full object-cover"
         />
@@ -108,11 +110,6 @@ export default function EventDetails() {
               ) : (
                 <p className="text-gray-300 leading-relaxed text-lg mb-6">
                   {event.fullDescription || event.description}
-                </p>
-              )}
-              {event.id !== 1 && (
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  Expect a fully immersive environment with custom lighting, designated play zones, and a strict dress code that encourages you to unleash your inner animal. Whether you're in full gear or just curious, the Mansion welcomes you.
                 </p>
               )}
             </motion.div>

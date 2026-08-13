@@ -8,6 +8,7 @@ const navItems = [
   { name: "Home", path: "/" },
   { name: "Mansion", path: "/mansion" },
   { name: "Events", path: "/events" },
+  { name: "Gallery", path: "/gallery" },
   { name: "Community", path: "/community" },
   { name: "Team", path: "/artists" },
   { name: "Partners", path: "/partners" },
@@ -71,8 +72,10 @@ export default function Navbar() {
           
           <div className="md:hidden">
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-300 hover:text-white focus:outline-none"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>

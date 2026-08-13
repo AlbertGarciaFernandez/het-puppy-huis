@@ -3,9 +3,14 @@ import { Handshake, ShoppingBag, Star } from "lucide-react";
 import churchLogo from "@/assets/church.png";
 import misterBLogo from "@/assets/misterb_logo_original_tones_transparent.png";
 
+const fuckAndFistLogo = "https://fuckandfist.com/img/logo-175613319219.jpg";
+const undergroundFetishLogo = "https://www.underground-fetish.com/wp-content/uploads/2018/10/underground.jpg";
+
 const partners = [
   { name: "Mister B", logo: misterBLogo, type: "Gear Partner", link: "https://www.misterb.com/en/new?gad_source=1&gad_campaignid=20276901572&gbraid=0AAAAApjT07napmDHcEPBjF2Gr7ybNvN4U&gclid=Cj0KCQjwi8nRBhDhARIsAHZf_pb01NIoQZHy9bmSfTyGRUyznQUx9OFXblOL6hiKNJuOL-Q0I0qm72EaAgsHEALw_wcB" },
   { name: "Club Church", logo: churchLogo, type: "Venue", link: "https://www.clubchurch.nl/" },
+  { name: "Fuck & Fist", logo: fuckAndFistLogo, type: "Product Sponsor Partner", link: "https://fuckandfist.com/en/" },
+  { name: "Underground Fetish", logo: undergroundFetishLogo, type: "Product Sponsor Partner", link: "https://www.underground-fetish.com/" },
 ];
 
 export default function Partners() {

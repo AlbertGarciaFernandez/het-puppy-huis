@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
 import EventCard from "../components/EventCard";
 import { events } from "@/data/events";
+import { getEventsByStatus } from "@/data/event-status";
 
 export default function Events() {
+  const upcomingEvents = getEventsByStatus(events, "upcoming");
+  const pastEvents = getEventsByStatus(events, "past");
+
   return (
     <div className="min-h-screen bg-neutral-950 pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -16,23 +20,6 @@ export default function Events() {
         </h1>
 
         <div className="grid grid-cols-1 gap-12">
-          {/* Night Events Section */}
-          <section>
-            <div className="flex items-center mb-8">
-              <div className="w-2 h-8 bg-neon-green mr-4 rounded-full" />
-              <h2 className="font-display text-3xl font-bold text-white uppercase tracking-wider">
-                Het Puppy Huis & <span className="text-neon-green">Puppy Hunter Mansion</span>
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 gap-8">
-              {events
-                .filter((e) => e.type === "night")
-                .map(({ id, ...event }) => (
-                  <EventCard key={id} id={id} {...event} />
-                ))}
-            </div>
-          </section>
-
           {/* Day Events Section */}
           <section>
             <div className="flex items-center mb-8">
@@ -42,11 +29,42 @@ export default function Events() {
               </h2>
             </div>
             <div className="grid grid-cols-1 gap-8">
-              {events
+              {upcomingEvents
                 .filter((e) => e.type === "day")
                 .map(({ id, ...event }) => (
                   <EventCard key={id} id={id} {...event} />
                 ))}
+            </div>
+          </section>
+
+          {/* Night Events Section */}
+          <section>
+            <div className="flex items-center mb-8">
+              <div className="w-2 h-8 bg-neon-green mr-4 rounded-full" />
+              <h2 className="font-display text-3xl font-bold text-white uppercase tracking-wider">
+                Het Puppy Huis & <span className="text-neon-green">Puppy Hunter Mansion</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-8">
+              {upcomingEvents
+                .filter((e) => e.type === "night")
+                .map(({ id, ...event }) => (
+                  <EventCard key={id} id={id} {...event} />
+                ))}
+            </div>
+          </section>
+
+          <section>
+            <div className="flex items-center mb-8">
+              <div className="w-2 h-8 bg-neon-pink mr-4 rounded-full" />
+              <h2 className="font-display text-3xl font-bold text-white uppercase tracking-wider">
+                Past <span className="text-neon-pink">Events</span>
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 gap-8">
+              {pastEvents.map(({ id, ...event }) => (
+                <EventCard key={id} id={id} {...event} />
+              ))}
             </div>
           </section>
         </div>

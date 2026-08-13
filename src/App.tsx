@@ -15,10 +15,12 @@ import Artists from "./pages/Artists";
 import Partners from "./pages/Partners";
 import Contact from "./pages/Contact";
 import PuppyGuide from "./pages/PuppyGuide";
+import Gallery from "./pages/Gallery";
 
 import Mansion from "./pages/Mansion";
 
 import EventDetails from "./pages/EventDetails";
+import GalleryAlbum from "./pages/GalleryAlbum";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,10 +45,11 @@ export default function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/events/details" element={<EventDetails />} />
             <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:slug" element={<GalleryAlbum />} />
             <Route path="/community" element={<Community />} />
             <Route path="/puppy-guide" element={<PuppyGuide />} />
             <Route path="/artists" element={<Artists />} />
-            {/* Gallery is hidden until we have approved event photos to publish. */}
             <Route path="/partners" element={<Partners />} />
             <Route path="/about" element={<Community />} />
             <Route path="/contact" element={<Contact />} />
