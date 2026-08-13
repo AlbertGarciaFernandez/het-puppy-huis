@@ -43,7 +43,7 @@ export default function PhotoLightbox({
   }
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 px-4 py-6 backdrop-blur-md" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95 px-4 py-6 backdrop-blur-md" role="dialog" aria-modal="true" aria-label="Photo viewer">
       <button className="absolute inset-0 cursor-default" aria-label="Close photo viewer" onClick={onClose} />
 
       <div className="relative z-10 flex h-full w-full max-w-7xl items-center justify-center">

@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Het Puppy Huis
 
-# Run and deploy your AI Studio app
+Website for Het Puppy Huis and Puppy Hunter Mansion. The frontend is a Vite React app, with a small Supabase-backed gallery API exposed through Vercel Functions.
 
-This contains everything you need to run your app locally.
+## Requirements
 
-View your app in AI Studio: https://ai.studio/apps/50e66945-c635-40fd-ad1a-35fd8afdaee3
+- Node.js 22+
+- npm
+- Supabase project with the gallery schema applied
 
-## Run Locally
+## Local Setup
 
-**Prerequisites:**  Node.js
+1. Install dependencies: `npm install`
+2. Copy `.env.example` to `.env.local`
+3. Fill in `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and `GALLERY_SESSION_SECRET`
+4. Start the gallery API: `npm run dev:api`
+5. Start the frontend in another terminal: `npm run dev`
 
+The Vite dev server proxies `/api/*` to `http://localhost:3001` when `VITE_GALLERY_API_URL` is empty.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Scripts
+
+- `npm run dev`: start the Vite frontend on port 5000
+- `npm run dev:api`: start the local gallery API on port 3001
+- `npm run build`: build the production frontend
+- `npm run lint`: run TypeScript checks
+- `npm test`: run the test suite
+- `npm run gallery:hash-password -- <password>`: generate a bcrypt hash for album passwords
+
+## Gallery Deployment
+
+The Vercel serverless entrypoint is `api/gallery/[...path].ts`, which mounts the existing Express gallery API.
+
+Set these environment variables in Vercel:
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `GALLERY_SESSION_SECRET`
+- `GALLERY_PHOTOS_BUCKET` optional, defaults to `gallery-private`
+- `FRONTEND_ORIGIN` optional
+
+After deploy, `https://www.hetpuppyhuis.com/api/gallery/albums` should return JSON.

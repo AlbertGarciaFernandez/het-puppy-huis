@@ -25,12 +25,17 @@ export default function Contact() {
               Stay updated on upcoming events, ticket drops, and community news. We promise not to spam (unless you're into that).
             </p>
             <form className="space-y-4" action="mailto:info@hetpuppyhuis.com?subject=Newsletter%20subscription" method="post" encType="text/plain">
+              <label className="block text-sm font-semibold text-gray-300" htmlFor="newsletter-email">
+                Email address
+              </label>
               <input
+                id="newsletter-email"
+                name="email"
                 type="email"
                 placeholder="Your email address"
                 className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-pink transition-colors"
               />
-              <button className="w-full bg-neon-pink text-black font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-white transition-colors flex items-center justify-center">
+              <button type="submit" className="w-full bg-neon-pink text-black font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-white transition-colors flex items-center justify-center">
                 Subscribe <Send className="ml-2 w-4 h-4" />
               </button>
             </form>
@@ -60,28 +65,38 @@ export default function Contact() {
               For DJ bookings, venue partnerships, or general questions, drop us a line.
             </p>
             <form className="grid grid-cols-1 md:grid-cols-2 gap-6" action="mailto:woof@puppyhuntermansion.com?subject=Bookings%20and%20inquiries" method="post" encType="text/plain">
+              <label className="sr-only" htmlFor="booking-name">Name</label>
               <input
+                id="booking-name"
+                name="name"
                 type="text"
                 placeholder="Name"
                 className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors"
               />
+              <label className="sr-only" htmlFor="booking-email">Email</label>
               <input
+                id="booking-email"
+                name="email"
                 type="email"
                 placeholder="Email"
                 className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors"
               />
-              <select className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-gray-400 focus:outline-none focus:border-neon-green transition-colors md:col-span-2">
+              <label className="sr-only" htmlFor="booking-topic">Inquiry type</label>
+              <select id="booking-topic" name="topic" className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-gray-400 focus:outline-none focus:border-neon-green transition-colors md:col-span-2">
                 <option>General Inquiry</option>
                 <option>DJ Booking</option>
                 <option>Venue Partnership</option>
                 <option>Press</option>
               </select>
+              <label className="sr-only" htmlFor="booking-message">Message</label>
               <textarea
+                id="booking-message"
+                name="message"
                 placeholder="Message"
                 rows={4}
                 className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-green transition-colors md:col-span-2"
               ></textarea>
-              <button className="md:col-span-2 bg-neon-green text-black font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-white transition-colors">
+              <button type="submit" className="md:col-span-2 bg-neon-green text-black font-bold uppercase tracking-wider py-3 rounded-lg hover:bg-white transition-colors">
                 Send Message
               </button>
             </form>

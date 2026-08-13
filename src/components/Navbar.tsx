@@ -49,14 +49,14 @@ export default function Navbar() {
             />
           </Link>
           
-          <div className="hidden lg:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+          <div className="hidden md:block">
+            <div className="ml-6 flex items-baseline space-x-4 lg:ml-10 lg:space-x-6">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   className={cn(
-                    "font-medium text-xs xl:text-sm uppercase tracking-widest hover:text-neon-pink transition-colors duration-200 relative group",
+                    "font-medium text-[11px] uppercase tracking-widest hover:text-neon-pink transition-colors duration-200 relative group lg:text-xs xl:text-sm",
                     location.pathname === item.path ? "text-neon-pink" : "text-gray-300"
                   )}
                 >
