@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Calendar, Clock, MapPin, Ticket, ArrowLeft, Twitter, Instagram, Link as LinkIcon, Check, PawPrint } from "lucide-react";
+import { Calendar, Clock, MapPin, Ticket, ArrowLeft, Link as LinkIcon, Check, PawPrint, Share2 } from "lucide-react";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { events } from "@/data/events";
 import { getEventHeroImage } from "@/data/event-images";
@@ -18,22 +18,27 @@ export default function EventDetails() {
   const shareText = `Check out ${event.title} at ${event.venue}!`;
   const heroImage = getEventHeroImage(event);
 
-  const handleShare = (platform: string) => {
-    let url = "";
-    switch (platform) {
-      case "twitter":
-        url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-        break;
-      case "instagram":
-        url = "https://www.instagram.com/puppyhuntermansion/";
-        break;
-      case "copy":
-        navigator.clipboard.writeText(shareUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: event.title,
+          text: shareText,
+          url: shareUrl,
+        });
         return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+      }
     }
-    if (url) window.open(url, "_blank");
+
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, "_blank");
+  };
+
+  const handleCopyLink = async () => {
+    await navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -110,7 +115,7 @@ export default function EventDetails() {
               ) : event.id === 3 ? (
                 <div className="text-gray-300 leading-relaxed text-lg mb-6 space-y-4">
                   <p>
-                    The final <span className="text-orange-400 font-semibold">Het Puppy Huis of 2026</span> is a <span className="text-neon-pink font-semibold">Dark Fashion Extravaganza</span> at <span className="text-neon-green font-semibold">Club Church</span>.
+                    The last <span className="text-orange-400 font-semibold">Het Puppy Huis of 2026</span> is a <span className="text-neon-pink font-semibold">Dark Fashion Extravaganza</span> at <span className="text-neon-green font-semibold">Club Church</span>.
                   </p>
                   <p>
                     Think <span className="text-orange-400 font-semibold">leather, rubber, puppy gear, harnesses, dark streetwear, fetish fashion, custom outfits</span> and dramatic autumn looks. Come dressed to impress, because this time the pack is watching.
@@ -260,27 +265,22 @@ export default function EventDetails() {
                 Get Tickets
               </a>
               
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 <button 
-                  onClick={() => handleShare("twitter")}
-                  className="flex items-center justify-center py-3 border border-white/10 text-gray-300 hover:text-[#1DA1F2] hover:border-[#1DA1F2]/50 font-bold uppercase tracking-wider rounded-lg hover:bg-white/5 transition-colors"
-                  aria-label="Share on Twitter"
-                >
-                  <Twitter className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={() => handleShare("instagram")}
+                  onClick={handleShare}
                   className="flex items-center justify-center py-3 border border-white/10 text-gray-300 hover:text-neon-pink hover:border-neon-pink/50 font-bold uppercase tracking-wider rounded-lg hover:bg-white/5 transition-colors"
-                  aria-label="Open Instagram"
+                  aria-label="Share event"
                 >
-                  <Instagram className="w-5 h-5" />
+                  <Share2 className="w-5 h-5 mr-2" />
+                  Share event
                 </button>
                 <button 
-                  onClick={() => handleShare("copy")}
+                  onClick={handleCopyLink}
                   className={`flex items-center justify-center py-3 border border-white/10 text-gray-300 hover:text-neon-green hover:border-neon-green/50 font-bold uppercase tracking-wider rounded-lg hover:bg-white/5 transition-colors ${copied ? "text-neon-green border-neon-green/50" : ""}`}
-                  aria-label="Copy Link"
+                  aria-label="Copy link"
                 >
-                  {copied ? <Check className="w-5 h-5" /> : <LinkIcon className="w-5 h-5" />}
+                  {copied ? <Check className="w-5 h-5 mr-2" /> : <LinkIcon className="w-5 h-5 mr-2" />}
+                  {copied ? "Copied" : "Copy link"}
                 </button>
               </div>
             </motion.div>

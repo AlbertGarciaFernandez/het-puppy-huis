@@ -17,7 +17,7 @@ export default function CodeOfConduct() {
             </p>
             <p>
               <span className="text-neon-green font-bold mr-2">3.</span>
-              <strong>Look Out for Each Other:</strong> If you see someone who looks uncomfortable or too intoxicated, check in on them or alert a care bear.
+              <strong>Look Out for Each Other:</strong> If you see someone who looks uncomfortable or too intoxicated, check in on them or alert our staff.
             </p>
             <p>
               <span className="text-neon-green font-bold mr-2">4.</span>

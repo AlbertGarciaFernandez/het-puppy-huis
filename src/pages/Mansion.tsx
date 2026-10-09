@@ -89,7 +89,7 @@ export default function Mansion() {
             <div className="bg-neutral-900 p-6 rounded-xl border border-white/5 hover:border-neon-green/30 transition-colors">
               <ShieldAlert className="w-10 h-10 text-neon-green mb-4" />
               <h3 className="font-bold text-white text-lg mb-2">Safe Space</h3>
-              <p className="text-sm text-gray-500">Strict consent policy and care bears on site.</p>
+              <p className="text-sm text-gray-500">Strict consent policy.</p>
             </div>
             <div className="bg-neutral-900 p-6 rounded-xl border border-white/5 hover:border-neon-green/30 transition-colors">
               <Zap className="w-10 h-10 text-neon-purple mb-4" />
