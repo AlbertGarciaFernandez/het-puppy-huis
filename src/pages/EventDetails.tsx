@@ -107,6 +107,36 @@ export default function EventDetails() {
                     Let your inner beast out, but do it appropriately and with respect for the pack. <span className="text-neon-green font-semibold">Be a good boy, or don't.</span>
                   </p>
                 </div>
+              ) : event.id === 3 ? (
+                <div className="text-gray-300 leading-relaxed text-lg mb-6 space-y-4">
+                  <p>
+                    The final <span className="text-orange-400 font-semibold">Het Puppy Huis of 2026</span> is a <span className="text-neon-pink font-semibold">Dark Fashion Extravaganza</span> at <span className="text-neon-green font-semibold">Club Church</span>.
+                  </p>
+                  <p>
+                    Think <span className="text-orange-400 font-semibold">leather, rubber, puppy gear, harnesses, dark streetwear, fetish fashion, custom outfits</span> and dramatic autumn looks. Come dressed to impress, because this time the pack is watching.
+                  </p>
+                  <p>
+                    From <span className="text-neon-green font-semibold">16:00</span>, our beloved Puppy Queen host <a href="https://www.instagram.com/vntdusk/" target="_blank" rel="noreferrer" className="text-neon-pink font-semibold hover:text-white transition-colors underline underline-offset-4">Vanity Dusk</a> brings <span className="text-neon-purple font-semibold">Puppy Drag Bingo</span> to the house.
+                  </p>
+                  <p>
+                    From <span className="text-orange-400 font-semibold">17:00</span>, the <span className="text-neon-blue font-semibold">Pup Runway / Best Look Contest</span> takes over the floor, with prizes from our dear partners for some of the best looks of the day. No professional runway skills needed: just walk, pose, play with the spotlight and show the pack what you brought.
+                  </p>
+                  <p>
+                    From <span className="text-neon-green font-semibold">18:00</span>, <span className="text-neon-pink font-semibold">Puppy Hunter Mansion</span> takes over.
+                  </p>
+                  <p>
+                    <a href="https://www.instagram.com/pup.hunter071/" target="_blank" rel="noreferrer" className="text-orange-400 font-semibold hover:text-white transition-colors underline underline-offset-4">HÜNTER</a> opens the final part of the party with cheeky, high-energy tracks to get every tail moving. Then <a href="https://www.instagram.com/pupvinz/" target="_blank" rel="noreferrer" className="text-neon-blue font-semibold hover:text-white transition-colors underline underline-offset-4">VINZ</a> takes the leash and keeps the pack dancing until the very end.
+                  </p>
+                  <p>
+                    Tickets are <span className="text-neon-green font-semibold">€15 + fees</span> with cloakroom included.
+                  </p>
+                  <p>
+                    For those unfamiliar with <span className="text-neon-blue font-semibold">Club Church</span>, the venue is a spacious three-story building with room for everyone to feel comfortable. We ask attendees to use the spaces appropriately: the bar and main floor are for <span className="text-neon-green font-semibold">socializing and activities</span>, while the darker downstairs areas are intended for <span className="text-neon-purple font-semibold">play</span>. You can check the venue facilities <a href="https://www.clubchurch.nl/info/facilities" target="_blank" rel="noreferrer" className="text-neon-pink font-semibold hover:text-white transition-colors underline underline-offset-4">here</a>.
+                  </p>
+                  <p>
+                    All genders are welcome. <span className="text-neon-green font-semibold">Respect, consent and personal boundaries are essential.</span>
+                  </p>
+                </div>
               ) : (
                 <p className="text-gray-300 leading-relaxed text-lg mb-6">
                   {event.fullDescription || event.description}
@@ -141,6 +171,26 @@ export default function EventDetails() {
                       </div>
                     );
                   })}
+                </div>
+              </motion.div>
+            )}
+
+            {event.id === 3 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <h2 className="font-display text-2xl font-bold text-white mb-6">Host</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-neutral-900/50 border border-orange-500/30 p-4 rounded-xl flex items-center">
+                    <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center text-orange-400 mr-4">
+                      <PawPrint className="w-6 h-6" />
+                    </div>
+                    <a href="https://www.instagram.com/vntdusk/" target="_blank" rel="noreferrer" className="text-white font-bold hover:text-orange-400 transition-colors uppercase tracking-wide">
+                      Puppy Drag Bingo hosted by Vanity Dusk
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             )}
