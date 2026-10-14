@@ -81,7 +81,7 @@ export const events: Event[] = [
   {
     id: 3,
     title: "Het Puppy Huis: Autumn Edition",
-    date: "November 14, 2026",
+    date: "November 28, 2026",
     time: "14:00 - 20:00",
     venue: "Club Church, Amsterdam",
     venueLink: "https://www.clubchurch.nl/",
