@@ -286,6 +286,33 @@ export default function EventDetails() {
             </motion.div>
           </div>
         </div>
+
+        {event.id === 3 && (
+          <motion.a
+            href="https://www.underground-fetish.com/category/puppy-park/"
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            aria-label="Visit Underground Fetish Puppy Park, event sponsor"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-10 block overflow-hidden rounded-xl border border-white/10 bg-neutral-900 transition-colors hover:border-neon-pink/40"
+          >
+            <img
+              src="/underground-fetish-banner.jpg"
+              alt="Underground Fetish, home of the European pup community"
+              width={1200}
+              height={400}
+              loading="lazy"
+              className="block h-auto w-full"
+              onError={(error) => {
+                const img = error.currentTarget;
+                if (!img.src.includes("/underground-fetish-banner.jpg")) return;
+                img.src = "https://www.underground-fetish.com/wp-content/uploads/2018/10/underground.jpg";
+              }}
+            />
+          </motion.a>
+        )}
       </div>
     </div>
   );
